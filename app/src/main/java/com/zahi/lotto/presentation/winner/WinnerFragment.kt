@@ -3,13 +3,14 @@ package com.zahi.lotto.presentation.winner
 import androidx.lifecycle.ViewModelProvider
 import com.zahi.lotto.R
 import com.zahi.lotto.databinding.FragmentWinnerBinding
+import com.zahi.lotto.presentation.MainActivity
 import com.zahi.lotto.presentation.recommended.RecommendedFragment
 import com.zahi.themovieapp.base.BaseFragment
 
 class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_winner) {
 
-    private lateinit var viewModel: RecommendedViewModel
-    private lateinit var viewModelFactory: RecommendedViewModelFactory
+    private lateinit var viewModel: WinnerViewModel
+    private lateinit var viewModelFactory: WinnerViewModelFactory
 
     override fun initView() {
 
@@ -19,8 +20,8 @@ class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_win
     }
 
     override fun initViewModel() {
-        viewModelFactory = RecommendedViewModelFactory()
-        viewModel = ViewModelProvider(this, viewModelFactory).get(RecommendedViewModel::class.java)
+        viewModelFactory = WinnerViewModelFactory()
+        viewModel = ViewModelProvider(this, viewModelFactory).get(WinnerViewModel::class.java)
     }
 
     companion object {
