@@ -24,11 +24,11 @@ class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_win
         viewModelFactory = WinnerViewModelFactory(WinnerRepository())
         viewModel = ViewModelProvider(this, viewModelFactory).get(WinnerViewModel::class.java)
 
-        viewModel.drwNo.value = 1004
-
         viewModel.drwNo.observe(this) {
             viewModel.getLottoWinnerNumber()
         }
+
+        viewModel.drwNo.value = 1004
     }
 
     companion object {
