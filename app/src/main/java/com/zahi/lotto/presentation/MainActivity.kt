@@ -7,7 +7,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.zahi.lotto.R
 import com.zahi.lotto.databinding.ActivityMainBinding
-import com.zahi.themovieapp.base.BaseActivity
+import com.zahi.lotto.base.BaseActivity
 
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private val navHostFragment: NavHostFragment by lazy {

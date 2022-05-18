@@ -1,4 +1,4 @@
-package com.zahi.themovieapp.base
+package com.zahi.lotto.base
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

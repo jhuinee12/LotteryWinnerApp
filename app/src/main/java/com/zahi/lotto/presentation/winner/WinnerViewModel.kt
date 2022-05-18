@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.zahi.lotto.entity.LotteryNumber
 import com.zahi.lotto.repositories.WinnerRepository
-import com.zahi.themovieapp.base.BaseViewModel
+import com.zahi.lotto.base.BaseViewModel
 import kotlinx.coroutines.launch
 
 

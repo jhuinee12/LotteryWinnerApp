@@ -1,4 +1,4 @@
-package com.zahi.themovieapp.base
+package com.zahi.lotto.base
 
 import android.os.Bundle
 import android.util.Log

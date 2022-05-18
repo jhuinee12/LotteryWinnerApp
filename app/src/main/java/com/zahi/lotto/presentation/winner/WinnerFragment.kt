@@ -11,7 +11,7 @@ import com.zahi.lotto.databinding.FragmentWinnerBinding
 import com.zahi.lotto.presentation.MainActivity
 import com.zahi.lotto.presentation.recommended.RecommendedFragment
 import com.zahi.lotto.repositories.WinnerRepository
-import com.zahi.themovieapp.base.BaseFragment
+import com.zahi.lotto.base.BaseFragment
 import java.text.SimpleDateFormat
 import java.util.*
 

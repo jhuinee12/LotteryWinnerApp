@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.zahi.lotto.R
 import com.zahi.lotto.databinding.FragmentRecommendedBinding
 import com.zahi.lotto.presentation.MainActivity
-import com.zahi.themovieapp.base.BaseFragment
+import com.zahi.lotto.base.BaseFragment
 
 class RecommendedFragment : BaseFragment<FragmentRecommendedBinding>(R.layout.fragment_recommended) {
 
