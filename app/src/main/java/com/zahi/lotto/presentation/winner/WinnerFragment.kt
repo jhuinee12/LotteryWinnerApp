@@ -28,6 +28,22 @@ class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_win
             viewModel.getLottoWinnerNumber()
         }
 
+        viewModel.lotteryData.observe(this) {
+            binding.drwNo.text = it.drwNo.toString()
+            binding.drwNoDate.text = it.drwNoDate
+            binding.firstAccumamnt.text = it.firstAccumamnt.toString()
+            binding.firstPrzwnerCo.text = it.firstPrzwnerCo.toString()
+            binding.firstWinamnt.text = it.firstWinamnt.toString()
+            binding.totSellamnt.text = it.totSellamnt.toString()
+            binding.drwtNo1.text = it.drwtNo1.toString()
+            binding.drwtNo2.text = it.drwtNo2.toString()
+            binding.drwtNo3.text = it.drwtNo3.toString()
+            binding.drwtNo4.text = it.drwtNo4.toString()
+            binding.drwtNo5.text = it.drwtNo5.toString()
+            binding.drwtNo6.text = it.drwtNo6.toString()
+            binding.bnusNo.text = it.bnusNo.toString()
+        }
+
         viewModel.drwNo.value = 1004
     }
 

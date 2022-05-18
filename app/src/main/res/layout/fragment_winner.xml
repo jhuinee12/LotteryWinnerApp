@@ -9,21 +9,249 @@
         android:layout_height="match_parent"
         android:background="@color/BackGround">
 
-        <EditText
-            android:id="@+id/inputLottoNumber"
+        <LinearLayout
+            android:id="@+id/layout_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="00"
-            android:textSize="20dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/gray"
-            android:maxEms="2"
-            android:maxLines="1"
-            android:inputType="number"
+            android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/layout_desc"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="회차번호"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="추첨일"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="총 1등 당첨금"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="1등 당첨 인원"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="1등 수령액"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="총 판매 금액"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="1번"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="2번"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="3번"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="4번"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="5번"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="6번"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="보너스 번호"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintStart_toEndOf="@+id/layout_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/drwNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"/>
+
+            <TextView
+                android:id="@+id/drwNoDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"/>
+
+            <TextView
+                android:id="@+id/firstAccumamnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"/>
+
+            <TextView
+                android:id="@+id/firstPrzwnerCo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"/>
+
+            <TextView
+                android:id="@+id/firstWinamnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"/>
+
+            <TextView
+                android:id="@+id/totSellamnt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"/>
+
+            <TextView
+                android:id="@+id/drwtNo1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"/>
+
+            <TextView
+                android:id="@+id/drwtNo2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"/>
+
+            <TextView
+                android:id="@+id/drwtNo3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"/>
+
+            <TextView
+                android:id="@+id/drwtNo4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"/>
+
+            <TextView
+                android:id="@+id/drwtNo5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"/>
+
+            <TextView
+                android:id="@+id/drwtNo6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"/>
+
+            <TextView
+                android:id="@+id/bnusNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray"/>
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
