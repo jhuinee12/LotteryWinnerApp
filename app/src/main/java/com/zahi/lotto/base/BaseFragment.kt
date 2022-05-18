@@ -17,6 +17,7 @@ abstract class BaseFragment<T: ViewDataBinding>(@LayoutRes private val layoutId:
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initViewModel()
     }
 
     override fun onCreateView(
@@ -33,7 +34,6 @@ abstract class BaseFragment<T: ViewDataBinding>(@LayoutRes private val layoutId:
         binding.lifecycleOwner = this
 
         initView()
-        initViewModel()
     }
 
     override fun onDestroy() {

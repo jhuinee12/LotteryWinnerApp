@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 
 
 class WinnerViewModel(private val winnerRepository: WinnerRepository) : BaseViewModel() {
-    var drwNo: MutableLiveData<Int> = MutableLiveData<Int>()
+    var drwNo: MutableLiveData<Long> = MutableLiveData<Long>()
     var lotteryData: MutableLiveData<LotteryNumber> = MutableLiveData<LotteryNumber>()
 
     fun getLottoWinnerNumber() {

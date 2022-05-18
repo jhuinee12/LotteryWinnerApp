@@ -11,7 +11,7 @@ interface LottoApi {
     @GET("common.do")
     fun getLottoWinnerNumber(
         @Query("method") method: String = "getLottoNumber",
-        @Query("drwNo") drwNo: Int,
+        @Query("drwNo") drwNo: Long,
     ): Observable<LotteryNumber>
 
 }

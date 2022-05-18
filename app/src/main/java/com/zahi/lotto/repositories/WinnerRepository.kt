@@ -13,7 +13,7 @@ class WinnerRepository {
 
 //    fun getLottoWinnerNumber(drwNo: Int) = lottoApi.getLottoWinnerNumber(drwNo = drwNo)
 
-    fun getLottoWinnerNumber(drwNo: Int, viewModel: WinnerViewModel) = lottoApi.getLottoWinnerNumber(drwNo = drwNo)
+    fun getLottoWinnerNumber(drwNo: Long, viewModel: WinnerViewModel) = lottoApi.getLottoWinnerNumber(drwNo = drwNo)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
@@ -27,9 +27,4 @@ class WinnerRepository {
                 // onComplete
                 Log.d("getLottoWinnerNumber-Repository", "onComplete")
             })
-
-    fun lottoWinnerNumber(drwNo: Int) = lottoApi.getLottoWinnerNumber(drwNo = drwNo)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-
 }
