@@ -13,9 +13,7 @@ class WinnerViewModel(private val winnerRepository: WinnerRepository) : BaseView
     var lotteryData: MutableLiveData<LotteryNumber> = MutableLiveData<LotteryNumber>()
 
     fun getLottoWinnerNumber() {
-        viewModelScope.launch {
-            winnerRepository.getLottoWinnerNumber(drwNo.value!!, this@WinnerViewModel)
-        }
+        winnerRepository.getLottoWinnerNumber(drwNo.value!!, this@WinnerViewModel)
     }
 
 }
