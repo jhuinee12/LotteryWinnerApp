@@ -22,7 +22,7 @@ class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_win
 
     override fun initView() {
 
-        (activity as MainActivity).changeToolbar(false)
+        (activity as MainActivity).changeToolbar(true, "로또 당첨 번호 조회")
 
         Log.d("TAG", "initView: latestDrwNo - ${latestDrwNo()}")
 

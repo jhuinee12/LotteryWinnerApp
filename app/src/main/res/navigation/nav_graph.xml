@@ -9,18 +9,22 @@
         android:id="@+id/WinnerFragment"
         android:name="com.zahi.lotto.presentation.winner.WinnerFragment"
         tools:layout="@layout/fragment_winner">
-
-        <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/RecommendedFragment" />
     </fragment>
     <fragment
         android:id="@+id/RecommendedFragment"
         android:name="com.zahi.lotto.presentation.recommended.RecommendedFragment"
         tools:layout="@layout/fragment_recommended">
-
-        <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/WinnerFragment" />
     </fragment>
+
+    <action
+        android:id="@+id/actionWinnerFragment"
+        app:destination="@id/WinnerFragment"
+        app:popUpTo="@id/RecommendedFragment"
+        app:popUpToInclusive="true" />
+
+    <action
+        android:id="@+id/actionRecommendedFragment"
+        app:destination="@id/RecommendedFragment"
+        app:popUpTo="@id/WinnerFragment"
+        app:popUpToInclusive="true" />
 </navigation>

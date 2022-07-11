@@ -1,7 +1,5 @@
 package com.zahi.lotto.presentation
 
-import android.util.Log
-import android.view.MenuItem
 import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -16,13 +14,26 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private val navController: NavController by lazy { navHostFragment.navController }
 
     override fun initView() {
-        Log.d("TAG", "initView: 이곳은 Main")
+        binding.apply {
+            this.bottomNav.setOnItemSelectedListener {
+                when (it.itemId) {
+                    R.id.action_home -> {
+                        navController.navigate(R.id.actionWinnerFragment)
+                    }
+                    R.id.action_favorite -> {
+                        navController.navigate(R.id.actionRecommendedFragment)
+                    }
+                }
+                return@setOnItemSelectedListener true
+            }
+        }
     }
 
     override fun initViewModel() { }
 
     fun changeToolbar(
-        isVisible: Boolean = true
+        isVisible: Boolean = true,
+        title: String = ""
     ) {
         binding.layoutToolbar.visibility =
             if (isVisible) {
@@ -31,31 +42,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                 View.GONE
             }
 
-        binding.toolbar.title = ""
+        binding.toolbar.title = title
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)
-    }
-
-    fun changeBottomNav(isVisible: Boolean = false) {
-        binding.bottomNav.visibility =
-            if (isVisible) {
-                View.VISIBLE
-            } else {
-                View.GONE
-            }
-    }
-
-    private fun refreshCurrentFragment(){
-        val id = navController.currentDestination?.id
-        navController.popBackStack(id!!,true)
-        navController.navigate(id)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> navController.navigateUp()
-            else -> true
-        }
     }
 }
