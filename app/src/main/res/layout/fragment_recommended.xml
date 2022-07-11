@@ -8,20 +8,110 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/BackGround">
-
-        <EditText
-            android:id="@+id/inputLottoNumber"
+        
+        <Button
+            android:id="@+id/btnRecommended"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="00"
+            android:text="추천 번호 받기"
             android:textSize="20dp"
-            android:maxEms="2"
-            android:maxLines="1"
-            android:inputType="number"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_marginTop="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutRecommendedNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/firstRecommendedNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:maxEms="2"
+                android:maxLines="1"
+                android:text="00"
+                android:padding="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/secondRecommendedNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:maxEms="2"
+                android:maxLines="1"
+                android:text="01"
+                android:padding="10dp"
+                app:layout_constraintStart_toEndOf="@+id/firstRecommendedNumber"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <TextView
+                android:id="@+id/thirdRecommendedNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:maxEms="2"
+                android:maxLines="1"
+                android:text="02"
+                android:padding="10dp"
+                app:layout_constraintStart_toEndOf="@+id/secondRecommendedNumber"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/fourthRecommendedNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:maxEms="2"
+                android:maxLines="1"
+                android:text="04"
+                android:padding="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/firstRecommendedNumber"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <TextView
+                android:id="@+id/fifthRecommendedNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:maxEms="2"
+                android:maxLines="1"
+                android:text="05"
+                android:padding="10dp"
+                app:layout_constraintStart_toEndOf="@+id/fourthRecommendedNumber"
+                app:layout_constraintTop_toBottomOf="@id/secondRecommendedNumber"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <TextView
+                android:id="@+id/sixthRecommendedNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:maxEms="2"
+                android:maxLines="1"
+                android:text="06"
+                android:padding="10dp"
+                app:layout_constraintStart_toEndOf="@+id/fifthRecommendedNumber"
+                app:layout_constraintTop_toBottomOf="@id/thirdRecommendedNumber"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
