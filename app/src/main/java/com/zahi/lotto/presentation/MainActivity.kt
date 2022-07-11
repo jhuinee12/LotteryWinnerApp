@@ -30,21 +30,4 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     }
 
     override fun initViewModel() { }
-
-    fun changeToolbar(
-        isVisible: Boolean = true,
-        title: String = ""
-    ) {
-        binding.layoutToolbar.visibility =
-            if (isVisible) {
-                View.VISIBLE
-            } else {
-                View.GONE
-            }
-
-        binding.toolbar.title = title
-        setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeButtonEnabled(true)
-    }
 }

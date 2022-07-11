@@ -13,7 +13,6 @@ class RecommendedFragment : BaseFragment<FragmentRecommendedBinding>(R.layout.fr
 
     override fun initView() {
 
-        (activity as MainActivity).changeToolbar(true, "로또 번호 추천")
 
         binding.apply { }
     }
