@@ -1,7 +1,5 @@
 package com.zahi.lotto.presentation
 
-import android.util.Log
-import android.view.MenuItem
 import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -20,13 +18,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             this.bottomNav.setOnItemSelectedListener {
                 when (it.itemId) {
                     R.id.action_home -> {
-                        navController.navigate(R.id.WinnerFragment)
+                        navController.navigate(R.id.actionWinnerFragment)
                     }
                     R.id.action_favorite -> {
-                        navController.navigate(R.id.RecommendedFragment)
+                        navController.navigate(R.id.actionRecommendedFragment)
                     }
                 }
-//                navController.popBackStack()
                 return@setOnItemSelectedListener true
             }
         }
@@ -49,12 +46,5 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            android.R.id.home -> navController.navigateUp()
-            else -> true
-        }
     }
 }

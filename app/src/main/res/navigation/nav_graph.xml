@@ -18,9 +18,13 @@
 
     <action
         android:id="@+id/actionWinnerFragment"
-        app:destination="@id/WinnerFragment" />
+        app:destination="@id/WinnerFragment"
+        app:popUpTo="@id/RecommendedFragment"
+        app:popUpToInclusive="true" />
 
     <action
         android:id="@+id/actionRecommendedFragment"
-        app:destination="@id/RecommendedFragment" />
+        app:destination="@id/RecommendedFragment"
+        app:popUpTo="@id/WinnerFragment"
+        app:popUpToInclusive="true" />
 </navigation>
