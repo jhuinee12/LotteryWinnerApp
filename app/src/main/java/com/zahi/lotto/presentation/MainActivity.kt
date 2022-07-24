@@ -18,6 +18,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             this.bottomNav.setOnItemSelectedListener {
                 when (it.itemId) {
                     R.id.action_home -> {
+                        navController.navigate(R.id.actionHomeFragment)
+                    }
+                    R.id.action_winner -> {
                         navController.navigate(R.id.actionWinnerFragment)
                     }
                     R.id.action_recommended -> {

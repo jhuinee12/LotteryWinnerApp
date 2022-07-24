@@ -1,28 +1,25 @@
-package com.zahi.lotto.presentation.home
+package com.zahi.lotto.presentation.winner
 
-import android.annotation.SuppressLint
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.lifecycle.ViewModelProvider
 import com.zahi.lotto.R
-import com.zahi.lotto.databinding.FragmentHomeBinding
-import com.zahi.lotto.repositories.WinnerRepository
 import com.zahi.lotto.base.BaseFragment
-import com.zahi.lotto.util.findLatestDrwNo.latestDrwNo
-import java.util.*
+import com.zahi.lotto.databinding.FragmentWinnerBinding
+import com.zahi.lotto.util.findLatestDrwNo
+import java.util.ArrayList
 
-class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
+class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_winner) {
 
-    private lateinit var viewModel: HomeViewModel
-    private lateinit var viewModelFactory: HomeViewModelFactory
+    private lateinit var viewModel: WinnerViewModel
+    private lateinit var viewModelFactory: WinnerViewModelFactory
 
     override fun initView() {
 
         binding.apply {
-            dataViewModel = viewModel
 
-            val latestDrwNo = latestDrwNo()
+            val latestDrwNo = findLatestDrwNo.latestDrwNo()
             val drwNoArray = ArrayList<Long>()
             for (i in latestDrwNo downTo 1) {
                 drwNoArray.add(i)
@@ -32,26 +29,23 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             spinner.setSelection(0)
             spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                    viewModel.drwNo.value = spinner.selectedItem.toString().toLong()
+
                 }
                 override fun onNothingSelected(p0: AdapterView<*>?) { }
                 override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) { }
             }
 
+            this.btnSearchWinner.setOnClickListener {
+            }
         }
     }
 
-    @SuppressLint("SetTextI18n")
     override fun initViewModel() {
-        viewModelFactory = HomeViewModelFactory(WinnerRepository())
-        viewModel = ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
-
-        viewModel.drwNo.observe(this) {
-            viewModel.getLottoWinnerNumber()
-        }
+        viewModelFactory = WinnerViewModelFactory()
+        viewModel = ViewModelProvider(this, viewModelFactory).get(WinnerViewModel::class.java)
     }
 
     companion object {
-        fun newInstance() = HomeFragment().apply { }
+        fun newInstance() = WinnerFragment().apply { }
     }
 }

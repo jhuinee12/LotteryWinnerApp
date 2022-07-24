@@ -11,20 +11,28 @@
         tools:layout="@layout/fragment_home">
     </fragment>
     <fragment
+        android:id="@+id/WinnerFragment"
+        android:name="com.zahi.lotto.presentation.winner.WinnerFragment"
+        tools:layout="@layout/fragment_winner">
+    </fragment>
+    <fragment
         android:id="@+id/RecommendedFragment"
         android:name="com.zahi.lotto.presentation.recommended.RecommendedFragment"
         tools:layout="@layout/fragment_recommended">
     </fragment>
 
     <action
-        android:id="@+id/actionWinnerFragment"
+        android:id="@+id/actionHomeFragment"
         app:destination="@id/HomeFragment"
-        app:popUpTo="@id/RecommendedFragment"
-        app:popUpToInclusive="true" />
+        app:popUpToInclusive="false" />
+
+    <action
+        android:id="@+id/actionWinnerFragment"
+        app:destination="@id/WinnerFragment"
+        app:popUpToInclusive="false" />
 
     <action
         android:id="@+id/actionRecommendedFragment"
         app:destination="@id/RecommendedFragment"
-        app:popUpTo="@id/HomeFragment"
-        app:popUpToInclusive="true" />
+        app:popUpToInclusive="false" />
 </navigation>
