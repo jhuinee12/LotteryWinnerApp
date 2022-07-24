@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/WinnerFragment">
+    app:startDestination="@id/HomeFragment">
 
     <fragment
-        android:id="@+id/WinnerFragment"
-        android:name="com.zahi.lotto.presentation.winner.WinnerFragment"
-        tools:layout="@layout/fragment_winner">
+        android:id="@+id/HomeFragment"
+        android:name="com.zahi.lotto.presentation.home.HomeFragment"
+        tools:layout="@layout/fragment_home">
     </fragment>
     <fragment
         android:id="@+id/RecommendedFragment"
@@ -18,13 +18,13 @@
 
     <action
         android:id="@+id/actionWinnerFragment"
-        app:destination="@id/WinnerFragment"
+        app:destination="@id/HomeFragment"
         app:popUpTo="@id/RecommendedFragment"
         app:popUpToInclusive="true" />
 
     <action
         android:id="@+id/actionRecommendedFragment"
         app:destination="@id/RecommendedFragment"
-        app:popUpTo="@id/WinnerFragment"
+        app:popUpTo="@id/HomeFragment"
         app:popUpToInclusive="true" />
 </navigation>

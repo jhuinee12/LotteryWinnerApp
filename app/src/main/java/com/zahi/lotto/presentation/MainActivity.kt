@@ -20,7 +20,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                     R.id.action_home -> {
                         navController.navigate(R.id.actionWinnerFragment)
                     }
-                    R.id.action_favorite -> {
+                    R.id.action_recommended -> {
                         navController.navigate(R.id.actionRecommendedFragment)
                     }
                 }

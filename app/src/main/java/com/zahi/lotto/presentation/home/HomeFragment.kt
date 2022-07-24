@@ -1,24 +1,21 @@
-package com.zahi.lotto.presentation.winner
+package com.zahi.lotto.presentation.home
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.lifecycle.ViewModelProvider
 import com.zahi.lotto.R
-import com.zahi.lotto.databinding.FragmentWinnerBinding
-import com.zahi.lotto.presentation.MainActivity
-import com.zahi.lotto.presentation.recommended.RecommendedFragment
+import com.zahi.lotto.databinding.FragmentHomeBinding
 import com.zahi.lotto.repositories.WinnerRepository
 import com.zahi.lotto.base.BaseFragment
 import java.text.SimpleDateFormat
 import java.util.*
 
-class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_winner) {
+class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
-    private lateinit var viewModel: WinnerViewModel
-    private lateinit var viewModelFactory: WinnerViewModelFactory
+    private lateinit var viewModel: HomeViewModel
+    private lateinit var viewModelFactory: HomeViewModelFactory
 
     override fun initView() {
 
@@ -46,8 +43,8 @@ class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_win
 
     @SuppressLint("SetTextI18n")
     override fun initViewModel() {
-        viewModelFactory = WinnerViewModelFactory(WinnerRepository())
-        viewModel = ViewModelProvider(this, viewModelFactory).get(WinnerViewModel::class.java)
+        viewModelFactory = HomeViewModelFactory(WinnerRepository())
+        viewModel = ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
 
         viewModel.drwNo.observe(this) {
             viewModel.getLottoWinnerNumber()
@@ -65,6 +62,6 @@ class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_win
     }
 
     companion object {
-        fun newInstance() = RecommendedFragment()
+        fun newInstance() = HomeFragment().apply { }
     }
 }

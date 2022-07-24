@@ -9,8 +9,13 @@
         android:icon="@drawable/ic_home"
         android:title="홈"/>
     <item
-        android:id="@+id/action_favorite"
+        android:id="@+id/action_winner"
         android:enabled="true"
         android:icon="@drawable/ic_favorite"
-        android:title="즐겨찾기"/>
+        android:title="당첨금 조회"/>
+    <item
+        android:id="@+id/action_recommended"
+        android:enabled="true"
+        android:icon="@drawable/ic_favorite"
+        android:title="추천번호"/>
 </menu>

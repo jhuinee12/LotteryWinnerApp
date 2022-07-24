@@ -1,4 +1,4 @@
-package com.zahi.lotto.presentation.winner
+package com.zahi.lotto.presentation.home
 
 import androidx.lifecycle.MutableLiveData
 import com.zahi.lotto.entity.LotteryNumber
@@ -6,7 +6,7 @@ import com.zahi.lotto.repositories.WinnerRepository
 import com.zahi.lotto.base.BaseViewModel
 
 
-class WinnerViewModel(private val winnerRepository: WinnerRepository) : BaseViewModel() {
+class HomeViewModel(private val winnerRepository: WinnerRepository) : BaseViewModel() {
     var drwNo: MutableLiveData<Long> = MutableLiveData<Long>()
     var lotteryData: MutableLiveData<LotteryNumber> = MutableLiveData<LotteryNumber>()
 
