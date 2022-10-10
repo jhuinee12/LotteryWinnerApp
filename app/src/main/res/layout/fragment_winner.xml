@@ -142,6 +142,160 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/inputNumberLayout"/>
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutPrize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnSearchWinner">
+
+            <TextView
+                android:id="@+id/tvWinnerTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:gravity="center"
+                android:text="1등 당첨 번호"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/winnerNumberLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvWinnerTitle">
+
+                <TextView
+                    android:id="@+id/winnerFirstNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="01"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:maxLength="2"
+                    android:inputType="number"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/winnerSecondNumber"/>
+
+                <TextView
+                    android:id="@+id/winnerSecondNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="02"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:maxLength="2"
+                    android:inputType="number"
+                    app:layout_constraintStart_toEndOf="@+id/winnerFirstNumber"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/winnerThirdNumber"/>
+
+                <TextView
+                    android:id="@+id/winnerThirdNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="03"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:maxLength="2"
+                    android:inputType="number"
+                    app:layout_constraintStart_toEndOf="@+id/winnerSecondNumber"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/winnerFourthNumber"/>
+
+                <TextView
+                    android:id="@+id/winnerFourthNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="04"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:maxLength="2"
+                    android:inputType="number"
+                    app:layout_constraintStart_toEndOf="@+id/winnerThirdNumber"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/winnerFifthNumber"/>
+
+                <TextView
+                    android:id="@+id/winnerFifthNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="05"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:maxLength="2"
+                    android:inputType="number"
+                    app:layout_constraintStart_toEndOf="@+id/winnerFourthNumber"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/winnerSixthNumber"/>
+
+                <TextView
+                    android:id="@+id/winnerSixthNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="06"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:maxLength="2"
+                    android:inputType="number"
+                    app:layout_constraintStart_toEndOf="@+id/winnerFifthNumber"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/winnerPlus"/>
+
+                <TextView
+                    android:id="@+id/winnerPlus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:maxLength="2"
+                    android:inputType="number"
+                    app:layout_constraintStart_toEndOf="@+id/winnerSixthNumber"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/winnerBonusNumber"/>
+
+                <TextView
+                    android:id="@+id/winnerBonusNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="06"
+                    android:textSize="20dp"
+                    android:gravity="center"
+                    android:maxLength="2"
+                    android:inputType="number"
+                    app:layout_constraintStart_toEndOf="@+id/winnerPlus"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/prize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:gravity="center"
+                android:text="당첨금: "
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/winnerNumberLayout"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
