@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.zahi.lotto.R
 import com.zahi.lotto.base.BaseFragment
 import com.zahi.lotto.databinding.FragmentWinnerBinding
+import com.zahi.lotto.entity.LotteryItem
 import com.zahi.lotto.repositories.WinnerRepository
 import com.zahi.lotto.util.findLatestDrwNo
 
@@ -24,6 +25,7 @@ class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_win
     override fun initView() {
 
         binding.apply {
+            dataViewModel = viewModel
 
             val latestDrwNo = findLatestDrwNo.latestDrwNo()
             val drwNoArray = ArrayList<Long>()
@@ -42,6 +44,8 @@ class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_win
             }
 
             this.btnSearchWinner.setOnClickListener {
+                nums.clear()
+
                 val keyboard = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 keyboard.hideSoftInputFromWindow(requireView().windowToken, 0)
 
@@ -67,10 +71,10 @@ class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_win
                 if (nums.size != 6) {
                     toast("6개의 숫자를 중복되지 않게 입력해주세요.")
                 } else {
-                    viewModel.getLottoWinnerNumber(drwNo)
+                    // 복권 당첨 금액 확인
+                    viewModel.getLottoWinnerNumber(drwNo, "https://www.dhlottery.co.kr/gameResult.do?method=byWin&drwNo=$drwNo")
                 }
             }
-
         }
     }
 
@@ -79,33 +83,45 @@ class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_win
         viewModelFactory = WinnerViewModelFactory(WinnerRepository())
         viewModel = ViewModelProvider(this, viewModelFactory).get(WinnerViewModel::class.java)
 
-        viewModel.lotteryData.observe(this) {
-
-            binding.winnerFirstNumber.text = it.drwtNo1.toString()
-            binding.winnerSecondNumber.text = it.drwtNo2.toString()
-            binding.winnerThirdNumber.text = it.drwtNo3.toString()
-            binding.winnerFourthNumber.text = it.drwtNo4.toString()
-            binding.winnerFifthNumber.text = it.drwtNo5.toString()
-            binding.winnerSixthNumber.text = it.drwtNo6.toString()
-            binding.winnerBonusNumber.text = it.bnusNo.toString()
-
-            var correctNumber = 0
-
-            if (nums.contains(it.drwtNo1)) correctNumber++
-            if (nums.contains(it.drwtNo2)) correctNumber++
-            if (nums.contains(it.drwtNo3)) correctNumber++
-            if (nums.contains(it.drwtNo4)) correctNumber++
-            if (nums.contains(it.drwtNo5)) correctNumber++
-            if (nums.contains(it.drwtNo6)) correctNumber++
-
-            binding.prize.text = "당첨금 : "+ when (correctNumber) {
-                6 -> it.firstAccumamnt.toString()
-                else -> "0"
-            } + "원"
+        viewModel.lotteryItem.observe(this) {
+            calcRank(it)
         }
     }
 
-    companion object {
-        fun newInstance() = WinnerFragment().apply { }
+    private fun calcRank(lottery: ArrayList<LotteryItem>) {
+        var correctNumber = 0
+
+        if (nums.contains(viewModel.lotteryNumber.value!!.drwtNo1)) correctNumber++
+        if (nums.contains(viewModel.lotteryNumber.value!!.drwtNo2)) correctNumber++
+        if (nums.contains(viewModel.lotteryNumber.value!!.drwtNo3)) correctNumber++
+        if (nums.contains(viewModel.lotteryNumber.value!!.drwtNo4)) correctNumber++
+        if (nums.contains(viewModel.lotteryNumber.value!!.drwtNo5)) correctNumber++
+        if (nums.contains(viewModel.lotteryNumber.value!!.drwtNo6)) correctNumber++
+
+        calcPrize(correctNumber, lottery)
+    }
+
+    private fun calcPrize(correctNumber: Int, lottery: ArrayList<LotteryItem>) {
+        binding.prize.text = "당첨금 : "+ when (correctNumber) {
+            6 -> {   // 1등 당첨
+                lottery[0].prize
+            }
+            5 -> {
+                if (nums.contains(viewModel.lotteryNumber.value!!.bnusNo)) { // 2등 당첨
+                    lottery[1].prize
+                } else { // 3등 당첨
+                    lottery[2].prize
+                }
+            }
+            4 -> {  // 4등 당첨
+                lottery[3].prize
+            }
+            3 -> {  // 5등 당첨
+                lottery[4].prize
+            }
+            else -> "0원"
+        }
+
+        binding.layoutPrize.visibility = View.VISIBLE
     }
 }

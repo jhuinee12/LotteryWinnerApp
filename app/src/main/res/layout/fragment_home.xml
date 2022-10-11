@@ -230,12 +230,12 @@
 
             <TextView
                 android:id="@+id/drwtNo1"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
                 android:text="@{Integer.toString(dataViewModel.lotteryData.drwtNo1)}"
                 android:textColor="@color/black"
-                android:textColorHint="@color/gray"/>
+                android:textColorHint="@color/gray"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/drwtNo2"

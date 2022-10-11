@@ -4,6 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".presentation.recommended.RecommendedFragment">
 
+    <data>
+        <variable
+            name="dataViewModel"
+            type="com.zahi.lotto.presentation.winner.WinnerViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -146,9 +152,11 @@
             android:id="@+id/layoutPrize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnSearchWinner">
+            app:layout_constraintTop_toBottomOf="@+id/btnSearchWinner"
+            tools:visibility="visible">
 
             <TextView
                 android:id="@+id/tvWinnerTitle"
@@ -178,11 +186,11 @@
                     android:id="@+id/winnerFirstNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="01"
                     android:textSize="20dp"
                     android:gravity="center"
                     android:maxLength="2"
                     android:inputType="number"
+                    android:text="@{Long.toString(dataViewModel.lotteryNumber.drwtNo1)}"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/winnerSecondNumber"/>
@@ -191,7 +199,7 @@
                     android:id="@+id/winnerSecondNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="02"
+                    android:text="@{Long.toString(dataViewModel.lotteryNumber.drwtNo2)}"
                     android:textSize="20dp"
                     android:gravity="center"
                     android:maxLength="2"
@@ -204,7 +212,7 @@
                     android:id="@+id/winnerThirdNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="03"
+                    android:text="@{Long.toString(dataViewModel.lotteryNumber.drwtNo3)}"
                     android:textSize="20dp"
                     android:gravity="center"
                     android:maxLength="2"
@@ -217,7 +225,7 @@
                     android:id="@+id/winnerFourthNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="04"
+                    android:text="@{Long.toString(dataViewModel.lotteryNumber.drwtNo4)}"
                     android:textSize="20dp"
                     android:gravity="center"
                     android:maxLength="2"
@@ -230,7 +238,7 @@
                     android:id="@+id/winnerFifthNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="05"
+                    android:text="@{Long.toString(dataViewModel.lotteryNumber.drwtNo5)}"
                     android:textSize="20dp"
                     android:gravity="center"
                     android:maxLength="2"
@@ -243,7 +251,7 @@
                     android:id="@+id/winnerSixthNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="06"
+                    android:text="@{Long.toString(dataViewModel.lotteryNumber.drwtNo6)}"
                     android:textSize="20dp"
                     android:gravity="center"
                     android:maxLength="2"
@@ -269,7 +277,7 @@
                     android:id="@+id/winnerBonusNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="06"
+                    android:text="@{Long.toString(dataViewModel.lotteryNumber.bnusNo)}"
                     android:textSize="20dp"
                     android:gravity="center"
                     android:maxLength="2"
