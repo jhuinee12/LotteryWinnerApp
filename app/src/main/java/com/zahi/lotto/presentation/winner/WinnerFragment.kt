@@ -7,6 +7,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.zahi.lotto.R
 import com.zahi.lotto.base.BaseFragment
 import com.zahi.lotto.databinding.FragmentWinnerBinding
@@ -18,9 +19,9 @@ class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_win
 
     private lateinit var viewModel: WinnerViewModel
     private lateinit var viewModelFactory: WinnerViewModelFactory
+    private val winnerAdapter: WinnerAdapter = WinnerAdapter()
 
     private var drwNo: Long = 0
-    private val nums = arrayListOf<Int>()
 
     override fun initView() {
 
@@ -43,37 +44,49 @@ class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_win
                 override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) { }
             }
 
-            this.btnSearchWinner.setOnClickListener {
-                nums.clear()
+            this.recyclerview.run {
+                setHasFixedSize(true)
+                layoutManager = LinearLayoutManager(requireContext())
+                adapter = winnerAdapter
+            }
 
+            this.btnInput.setOnClickListener {
                 val keyboard = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 keyboard.hideSoftInputFromWindow(requireView().windowToken, 0)
 
-                if (this.inputFirstNumber.text.isNotEmpty()
-                    && this.inputSecondNumber.text.isNotEmpty()
-                    && this.inputThirdNumber.text.isNotEmpty()
-                    && this.inputFourthNumber.text.isNotEmpty()
-                    && this.inputFifthNumber.text.isNotEmpty()
-                    && this.inputSixthNumber.text.isNotEmpty()) {
+                if (this.number1.text.isNotEmpty()
+                    && this.number2.text.isNotEmpty()
+                    && this.number3.text.isNotEmpty()
+                    && this.number4.text.isNotEmpty()
+                    && this.number5.text.isNotEmpty()
+                    && this.number6.text.isNotEmpty()) {
 
-                    nums.add(this.inputFirstNumber.text.toString().toInt())
-                    nums.add(this.inputSecondNumber.text.toString().toInt())
-                    nums.add(this.inputThirdNumber.text.toString().toInt())
-                    nums.add(this.inputFourthNumber.text.toString().toInt())
-                    nums.add(this.inputFifthNumber.text.toString().toInt())
-                    nums.add(this.inputSixthNumber.text.toString().toInt())
+                    val nums: Set<Int> = setOf(
+                        this.number1.text.toString().toInt(),
+                        this.number2.text.toString().toInt(),
+                        this.number3.text.toString().toInt(),
+                        this.number4.text.toString().toInt(),
+                        this.number5.text.toString().toInt(),
+                        this.number6.text.toString().toInt()
+                    )
+
+                    val array = nums.toCollection(arrayListOf())
+                    if (nums.size != 6) {
+                        toast("6개의 숫자를 중복되지 않게 입력해주세요.")
+                    } else {
+                        array.sort()
+                        winnerAdapter.update(array)
+                    }
+
                 } else {
                     toast("6개의 숫자를 모두 입력해주세요.")
                     return@setOnClickListener
                 }
 
-                nums.distinct()
-                if (nums.size != 6) {
-                    toast("6개의 숫자를 중복되지 않게 입력해주세요.")
-                } else {
-                    // 복권 당첨 금액 확인
-                    viewModel.getLottoWinnerNumber(drwNo, "https://www.dhlottery.co.kr/gameResult.do?method=byWin&drwNo=$drwNo")
-                }
+            }
+
+            this.btnSearchWinner.setOnClickListener {
+                viewModel.getLottoWinnerNumber(drwNo, "https://www.dhlottery.co.kr/gameResult.do?method=byWin&drwNo=$drwNo")
             }
         }
     }
@@ -91,12 +104,12 @@ class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_win
     private fun calcRank(lottery: ArrayList<LotteryItem>) {
         var correctNumber = 0
 
-        if (nums.contains(viewModel.lotteryNumber.value!!.drwtNo1)) correctNumber++
-        if (nums.contains(viewModel.lotteryNumber.value!!.drwtNo2)) correctNumber++
-        if (nums.contains(viewModel.lotteryNumber.value!!.drwtNo3)) correctNumber++
-        if (nums.contains(viewModel.lotteryNumber.value!!.drwtNo4)) correctNumber++
-        if (nums.contains(viewModel.lotteryNumber.value!!.drwtNo5)) correctNumber++
-        if (nums.contains(viewModel.lotteryNumber.value!!.drwtNo6)) correctNumber++
+//        if (nums.contains(viewModel.lotteryNumber.value!!.drwtNo1)) correctNumber++
+//        if (nums.contains(viewModel.lotteryNumber.value!!.drwtNo2)) correctNumber++
+//        if (nums.contains(viewModel.lotteryNumber.value!!.drwtNo3)) correctNumber++
+//        if (nums.contains(viewModel.lotteryNumber.value!!.drwtNo4)) correctNumber++
+//        if (nums.contains(viewModel.lotteryNumber.value!!.drwtNo5)) correctNumber++
+//        if (nums.contains(viewModel.lotteryNumber.value!!.drwtNo6)) correctNumber++
 
         calcPrize(correctNumber, lottery)
     }
@@ -106,19 +119,19 @@ class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_win
             6 -> {   // 1등 당첨
                 lottery[0].prize
             }
-            5 -> {
-                if (nums.contains(viewModel.lotteryNumber.value!!.bnusNo)) { // 2등 당첨
-                    lottery[1].prize
-                } else { // 3등 당첨
-                    lottery[2].prize
-                }
-            }
-            4 -> {  // 4등 당첨
-                lottery[3].prize
-            }
-            3 -> {  // 5등 당첨
-                lottery[4].prize
-            }
+//            5 -> {
+//                if (nums.contains(viewModel.lotteryNumber.value!!.bnusNo)) { // 2등 당첨
+//                    lottery[1].prize
+//                } else { // 3등 당첨
+//                    lottery[2].prize
+//                }
+//            }
+//            4 -> {  // 4등 당첨
+//                lottery[3].prize
+//            }
+//            3 -> {  // 5등 당첨
+//                lottery[4].prize
+//            }
             else -> "0원"
         }
 

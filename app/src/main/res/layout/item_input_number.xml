@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="java.util.ArrayList"/>
+        <variable
+            name="numbers"
+            type="ArrayList&lt;Integer&gt;" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/inputNumberLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/number1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="@{Integer.toString(numbers.get(0))}"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:maxLength="2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/number2"/>
+
+        <TextView
+            android:id="@+id/number2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="@{Integer.toString(numbers.get(1))}"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:maxLength="2"
+            app:layout_constraintStart_toEndOf="@+id/number1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/number3"/>
+
+        <TextView
+            android:id="@+id/number3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="@{Integer.toString(numbers.get(2))}"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:maxLength="2"
+            app:layout_constraintStart_toEndOf="@+id/number2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/number4"/>
+
+        <TextView
+            android:id="@+id/number4"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="@{Integer.toString(numbers.get(3))}"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:maxLength="2"
+            app:layout_constraintStart_toEndOf="@+id/number3"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/number5"/>
+
+        <TextView
+            android:id="@+id/number5"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="@{Integer.toString(numbers.get(4))}"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:maxLength="2"
+            app:layout_constraintStart_toEndOf="@+id/number4"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/number6"/>
+
+        <TextView
+            android:id="@+id/number6"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="@{Integer.toString(numbers.get(5))}"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:maxLength="2"
+            app:layout_constraintStart_toEndOf="@+id/number5"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnDelete"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDelete"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:text="X"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:maxLength="2"
+            android:backgroundTint="@color/gray"
+            android:textColor="@color/black"
+            android:padding="0dp"
+            app:layout_constraintStart_toEndOf="@+id/number6"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
