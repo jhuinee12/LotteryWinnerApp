@@ -12,4 +12,12 @@
     <color name="viewColor">#FF6200EE</color>
     <color name="Item_BackGround">#ebeff3</color>
     <color name="white_smallText">#1D1E1E</color>
+
+    <color name="number_bg_1">#F1C40F</color>
+    <color name="number_bg_2">#77BCEA</color>
+    <color name="number_bg_3">#BEBEBE</color>
+    <color name="number_bg_4">#B88BCA</color>
+    <color name="number_bg_5">#2ECC71</color>
+
+    <color name="default_color">#EF877F</color>
 </resources>

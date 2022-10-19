@@ -1,6 +1,5 @@
 package com.zahi.lotto.presentation
 
-import android.view.View
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.zahi.lotto.R
@@ -18,7 +17,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             this.bottomNav.setOnItemSelectedListener {
                 when (it.itemId) {
                     R.id.action_home -> {
-                        navController.navigate(R.id.actionHomeFragment)
+                        navController.navigate(R.id.actionPrizeFragment)
                     }
                     R.id.action_winner -> {
                         navController.navigate(R.id.actionWinnerFragment)

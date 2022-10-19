@@ -6,7 +6,7 @@ import com.zahi.lotto.repositories.WinnerRepository
 import com.zahi.lotto.base.BaseViewModel
 
 
-class HomeViewModel(private val winnerRepository: WinnerRepository) : BaseViewModel() {
+class PrizeViewModel(private val winnerRepository: WinnerRepository) : BaseViewModel() {
     var drwNo: MutableLiveData<Long> = MutableLiveData<Long>()
     var lotteryData: MutableLiveData<LotteryNumber> = MutableLiveData<LotteryNumber>()
 

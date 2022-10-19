@@ -6,16 +6,19 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.lifecycle.ViewModelProvider
 import com.zahi.lotto.R
-import com.zahi.lotto.databinding.FragmentHomeBinding
 import com.zahi.lotto.repositories.WinnerRepository
 import com.zahi.lotto.base.BaseFragment
+import com.zahi.lotto.databinding.FragmentPrizeBinding
 import com.zahi.lotto.util.findLatestDrwNo.latestDrwNo
 import java.util.*
 
-class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
+/**
+ * 당첨 결과 조회 화면
+ */
+class PrizeFragment : BaseFragment<FragmentPrizeBinding>(R.layout.fragment_prize) {
 
-    private lateinit var viewModel: HomeViewModel
-    private lateinit var viewModelFactory: HomeViewModelFactory
+    private lateinit var viewModel: PrizeViewModel
+    private lateinit var viewModelFactory: PrizeViewModelFactory
 
     override fun initView() {
 
@@ -43,8 +46,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     @SuppressLint("SetTextI18n")
     override fun initViewModel() {
-        viewModelFactory = HomeViewModelFactory(WinnerRepository())
-        viewModel = ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
+        viewModelFactory = PrizeViewModelFactory(WinnerRepository())
+        viewModel = ViewModelProvider(this, viewModelFactory).get(PrizeViewModel::class.java)
 
         viewModel.drwNo.observe(this) {
             viewModel.getLottoWinnerNumber()
@@ -52,6 +55,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     }
 
     companion object {
-        fun newInstance() = HomeFragment().apply { }
+        fun newInstance() = PrizeFragment().apply { }
     }
 }
