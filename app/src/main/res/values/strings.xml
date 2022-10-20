@@ -13,5 +13,5 @@
     <string name="prize_title_drwno">%d회 당첨 결과</string>
     <string name="prize_title_drwdate">(%s 추첨)</string>
 
-    <string name="prize_1st">￦ %s</string>
+    <string name="my_grade">%d등</string>
 </resources>

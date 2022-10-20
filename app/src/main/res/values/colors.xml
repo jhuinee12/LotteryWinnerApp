@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="gray">#ACACAC</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#F41404</color>
     <color name="BackGround">#ffffff</color>
     <color name="viewColor">#FF6200EE</color>
     <color name="Item_BackGround">#ebeff3</color>
@@ -18,6 +19,7 @@
     <color name="number_bg_3">#BEBEBE</color>
     <color name="number_bg_4">#B88BCA</color>
     <color name="number_bg_5">#2ECC71</color>
+    <color name="number_bg_default">#E6E5E5</color>
 
     <color name="default_color">#EF877F</color>
     <color name="bg_color">#F3D6D4</color>

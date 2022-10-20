@@ -6,56 +6,20 @@
     tools:context=".presentation.prize.PrizeFragment">
 
     <data>
-        <import type="android.view.View"/>
-        <import type="java.util.ArrayList"/>
         <variable
-            name="getNumber"
-            type="ArrayList&lt;Integer&gt;" />
-        <variable
-            name="showGrade"
-            type="java.lang.Boolean"/>
-        <variable
-            name="position"
-            type="Integer"/>
-        <variable
-            name="rank"
-            type="Integer"/>
+            name="fragment"
+            type="com.zahi.lotto.presentation.winner.WinnerFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/indexLayout"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/firstNumberLayout"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
-
-            <TextView
-                android:id="@+id/index"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:text="@{Integer.toString(position)}"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                android:textColor="@color/default_color"
-                android:gravity="center"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/firstNumberLayout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            app:layout_constraintStart_toEndOf="@+id/indexLayout"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/secondNumberLayout"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
@@ -72,26 +36,18 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/firstNumberStar"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:backgroundTint="@color/default_color"
-                android:background="@drawable/ic_star"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <TextView
+            <EditText
                 android:id="@+id/firstNumber"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:hint="00"
-                android:text="@{Integer.toString(getNumber.get(0))}"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:hint="01"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:gravity="center"
+                android:maxLength="2"
+                android:inputType="number"
+                android:background="@null"
                 app:layout_constraintStart_toStartOf="@+id/firstNumberShape"
                 app:layout_constraintEnd_toEndOf="@+id/firstNumberShape"
                 app:layout_constraintTop_toTopOf="@+id/firstNumberShape"
@@ -120,26 +76,18 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/secondNumberStar"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:backgroundTint="@color/default_color"
-                android:background="@drawable/ic_star"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <TextView
+            <EditText
                 android:id="@+id/secondNumber"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:hint="00"
-                android:text="@{Integer.toString(getNumber.get(1))}"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:hint="01"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:gravity="center"
+                android:maxLength="2"
+                android:inputType="number"
+                android:background="@null"
                 app:layout_constraintStart_toStartOf="@+id/secondNumberShape"
                 app:layout_constraintEnd_toEndOf="@+id/secondNumberShape"
                 app:layout_constraintTop_toTopOf="@+id/secondNumberShape"
@@ -168,30 +116,23 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/thirdNumberStar"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:backgroundTint="@color/default_color"
-                android:background="@drawable/ic_star"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <TextView
+            <EditText
                 android:id="@+id/thirdNumber"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:hint="00"
-                android:text="@{Integer.toString(getNumber.get(2))}"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:hint="01"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:gravity="center"
+                android:maxLength="2"
+                android:inputType="number"
+                android:background="@null"
                 app:layout_constraintStart_toStartOf="@+id/thirdNumberShape"
                 app:layout_constraintEnd_toEndOf="@+id/thirdNumberShape"
                 app:layout_constraintTop_toTopOf="@+id/thirdNumberShape"
                 app:layout_constraintBottom_toBottomOf="@+id/thirdNumberShape"/>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -216,26 +157,18 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/fourthNumberStar"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:backgroundTint="@color/default_color"
-                android:background="@drawable/ic_star"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <TextView
+            <EditText
                 android:id="@+id/fourthNumber"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:hint="00"
-                android:text="@{Integer.toString(getNumber.get(3))}"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:hint="01"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:gravity="center"
+                android:maxLength="2"
+                android:inputType="number"
+                android:background="@null"
                 app:layout_constraintStart_toStartOf="@+id/fourthNumberShape"
                 app:layout_constraintEnd_toEndOf="@+id/fourthNumberShape"
                 app:layout_constraintTop_toTopOf="@+id/fourthNumberShape"
@@ -264,26 +197,18 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/fifthNumberStar"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:backgroundTint="@color/default_color"
-                android:background="@drawable/ic_star"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <TextView
+            <EditText
                 android:id="@+id/fifthNumber"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:hint="00"
-                android:text="@{Integer.toString(getNumber.get(4))}"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:hint="01"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:gravity="center"
+                android:maxLength="2"
+                android:inputType="number"
+                android:background="@null"
                 app:layout_constraintStart_toStartOf="@+id/fifthNumberShape"
                 app:layout_constraintEnd_toEndOf="@+id/fifthNumberShape"
                 app:layout_constraintTop_toTopOf="@+id/fifthNumberShape"
@@ -296,6 +221,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             app:layout_constraintStart_toEndOf="@+id/fifthNumberLayout"
+            app:layout_constraintEnd_toStartOf="@+id/plusLayout"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
 
@@ -311,26 +237,18 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/sixthNumberStar"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:backgroundTint="@color/default_color"
-                android:background="@drawable/ic_star"
-                android:visibility="gone"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <TextView
+            <EditText
                 android:id="@+id/sixthNumber"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:hint="00"
-                android:text="@{Integer.toString(getNumber.get(5))}"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:hint="01"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:gravity="center"
+                android:maxLength="2"
+                android:inputType="number"
+                android:background="@null"
                 app:layout_constraintStart_toStartOf="@+id/sixthNumberShape"
                 app:layout_constraintEnd_toEndOf="@+id/sixthNumberShape"
                 app:layout_constraintTop_toTopOf="@+id/sixthNumberShape"
@@ -339,17 +257,17 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/deleteLayout"
+            android:id="@+id/plusLayout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:visibility="@{showGrade ? View.GONE : View.VISIBLE}"
             app:layout_constraintStart_toEndOf="@+id/sixthNumberLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:onClick="@{fragment::addNumbers}">
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/deleteShape"
+                android:id="@+id/plusShape"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:padding="5dp"
@@ -361,40 +279,13 @@
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
             <TextView
-                android:id="@+id/delete"
-                android:layout_width="50dp"
+                android:id="@+id/plus"
+                android:layout_width="30dp"
                 android:layout_height="50dp"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="X"
+                android:text="+"
                 android:textColor="@color/black"
-                android:textSize="18dp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/gradeLayout"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:visibility="@{showGrade ? View.VISIBLE : View.GONE}"
-            app:layout_constraintStart_toEndOf="@+id/sixthNumberLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
-
-            <TextView
-                android:id="@+id/grade"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="@{String.format(@string/my_grade, rank)}"
-                android:textColor="@color/red"
                 android:textSize="18dp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"

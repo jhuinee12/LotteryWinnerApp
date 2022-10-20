@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.zahi.lotto.R
 import com.zahi.lotto.base.BaseFragment
 import com.zahi.lotto.databinding.FragmentWinnerBinding
-import com.zahi.lotto.entity.LotteryItem
 import com.zahi.lotto.repositories.WinnerRepository
 import com.zahi.lotto.util.findLatestDrwNo
 
@@ -19,13 +18,16 @@ class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_win
 
     private lateinit var viewModel: WinnerViewModel
     private lateinit var viewModelFactory: WinnerViewModelFactory
-    private val winnerAdapter: WinnerAdapter = WinnerAdapter()
+    private lateinit var winnerAdapter: WinnerAdapter
 
     private var drwNo: Long = 0
 
     override fun initView() {
 
+        winnerAdapter = WinnerAdapter(requireContext())
+
         binding.apply {
+            fragment = this@WinnerFragment
             dataViewModel = viewModel
 
             val latestDrwNo = findLatestDrwNo.latestDrwNo()
@@ -44,49 +46,10 @@ class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_win
                 override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) { }
             }
 
-            this.recyclerview.run {
+            recyclerview.run {
                 setHasFixedSize(true)
                 layoutManager = LinearLayoutManager(requireContext())
                 adapter = winnerAdapter
-            }
-
-            this.btnInput.setOnClickListener {
-                val keyboard = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                keyboard.hideSoftInputFromWindow(requireView().windowToken, 0)
-
-                if (this.number1.text.isNotEmpty()
-                    && this.number2.text.isNotEmpty()
-                    && this.number3.text.isNotEmpty()
-                    && this.number4.text.isNotEmpty()
-                    && this.number5.text.isNotEmpty()
-                    && this.number6.text.isNotEmpty()) {
-
-                    val nums: Set<Int> = setOf(
-                        this.number1.text.toString().toInt(),
-                        this.number2.text.toString().toInt(),
-                        this.number3.text.toString().toInt(),
-                        this.number4.text.toString().toInt(),
-                        this.number5.text.toString().toInt(),
-                        this.number6.text.toString().toInt()
-                    )
-
-                    val array = nums.toCollection(arrayListOf())
-                    if (nums.size != 6) {
-                        toast("6개의 숫자를 중복되지 않게 입력해주세요.")
-                    } else {
-                        array.sort()
-                        winnerAdapter.update(array)
-                    }
-
-                } else {
-                    toast("6개의 숫자를 모두 입력해주세요.")
-                    return@setOnClickListener
-                }
-
-            }
-
-            this.btnSearchWinner.setOnClickListener {
-                viewModel.getLottoWinnerNumber(drwNo, "https://www.dhlottery.co.kr/gameResult.do?method=byWin&drwNo=$drwNo")
             }
         }
     }
@@ -97,44 +60,79 @@ class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_win
         viewModel = ViewModelProvider(this, viewModelFactory).get(WinnerViewModel::class.java)
 
         viewModel.lotteryItem.observe(this) {
-            calcRank(it)
+            winnerAdapter.lotteryItem = it
+            winnerAdapter.notifyDataSetChanged()
+        }
+        viewModel.lotteryNumber.observe(this) {
+            winnerAdapter.lotteryWinningNums.add(it.drwtNo1)
+            winnerAdapter.lotteryWinningNums.add(it.drwtNo2)
+            winnerAdapter.lotteryWinningNums.add(it.drwtNo3)
+            winnerAdapter.lotteryWinningNums.add(it.drwtNo4)
+            winnerAdapter.lotteryWinningNums.add(it.drwtNo5)
+            winnerAdapter.lotteryWinningNums.add(it.drwtNo6)
+            winnerAdapter.lotteryWinningNums.add(it.bnusNo)
         }
     }
 
-    private fun calcRank(lottery: ArrayList<LotteryItem>) {
-        var correctNumber = 0
+    fun addNumbers(v: View) {
+        val keyboard = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        keyboard.hideSoftInputFromWindow(requireView().windowToken, 0)
 
-//        if (nums.contains(viewModel.lotteryNumber.value!!.drwtNo1)) correctNumber++
-//        if (nums.contains(viewModel.lotteryNumber.value!!.drwtNo2)) correctNumber++
-//        if (nums.contains(viewModel.lotteryNumber.value!!.drwtNo3)) correctNumber++
-//        if (nums.contains(viewModel.lotteryNumber.value!!.drwtNo4)) correctNumber++
-//        if (nums.contains(viewModel.lotteryNumber.value!!.drwtNo5)) correctNumber++
-//        if (nums.contains(viewModel.lotteryNumber.value!!.drwtNo6)) correctNumber++
+        binding.inputNumber.apply {
 
-        calcPrize(correctNumber, lottery)
-    }
+            if (firstNumber.text.isNotEmpty()
+                && secondNumber.text.isNotEmpty()
+                && thirdNumber.text.isNotEmpty()
+                && fourthNumber.text.isNotEmpty()
+                && fifthNumber.text.isNotEmpty()
+                && sixthNumber.text.isNotEmpty()) {
 
-    private fun calcPrize(correctNumber: Int, lottery: ArrayList<LotteryItem>) {
-        binding.prize.text = "당첨금 : "+ when (correctNumber) {
-            6 -> {   // 1등 당첨
-                lottery[0].prize
+                val nums: Set<Int> = setOf(
+                    firstNumber.text.toString().toInt(),
+                    secondNumber.text.toString().toInt(),
+                    thirdNumber.text.toString().toInt(),
+                    fourthNumber.text.toString().toInt(),
+                    fifthNumber.text.toString().toInt(),
+                    sixthNumber.text.toString().toInt()
+                )
+
+                val array = nums.toCollection(arrayListOf())
+                if (nums.size != 6) {
+                    toast("6개의 숫자를 중복되지 않게 입력해주세요.")
+                } else {
+                    array.sort()
+                    winnerAdapter.update(array)
+                }
+
+            } else {
+                toast("6개의 숫자를 모두 입력해주세요.")
             }
-//            5 -> {
-//                if (nums.contains(viewModel.lotteryNumber.value!!.bnusNo)) { // 2등 당첨
-//                    lottery[1].prize
-//                } else { // 3등 당첨
-//                    lottery[2].prize
-//                }
-//            }
-//            4 -> {  // 4등 당첨
-//                lottery[3].prize
-//            }
-//            3 -> {  // 5등 당첨
-//                lottery[4].prize
-//            }
-            else -> "0원"
         }
+    }
 
-        binding.layoutPrize.visibility = View.VISIBLE
+    fun searchWinning (v: View) {
+        binding.apply {
+            viewModel.getLottoWinnerNumber(drwNo, "https://www.dhlottery.co.kr/gameResult.do?method=byWin&drwNo=$drwNo")
+
+            btnSearchWinner.visibility = View.GONE
+            btnModifyNumber.visibility = View.VISIBLE
+            inputNumberLayout.visibility = View.GONE
+
+            winnerAdapter.isShowGrade = true
+        }
+    }
+
+    fun modifyNumbers (v: View) {
+        binding.apply {
+            btnSearchWinner.visibility = View.VISIBLE
+            btnModifyNumber.visibility = View.GONE
+            inputNumberLayout.visibility = View.VISIBLE
+
+            winnerAdapter.isShowGrade = false
+            winnerAdapter.notifyDataSetChanged()
+
+            winnerAdapter.lotteryItem = arrayListOf()
+            winnerAdapter.lotteryWinningNums = arrayListOf()
+        }
     }
 }
