@@ -1,4 +1,4 @@
-package com.zahi.lotto.presentation.home
+package com.zahi.lotto.presentation.prize
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/PrizeFragment"
-        android:name="com.zahi.lotto.presentation.home.PrizeFragment"
+        android:name="com.zahi.lotto.presentation.prize.PrizeFragment"
         tools:layout="@layout/fragment_prize">
     </fragment>
     <fragment

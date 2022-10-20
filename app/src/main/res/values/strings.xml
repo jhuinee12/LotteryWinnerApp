@@ -9,4 +9,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <string name="price_format">%,2d</string>
+
+    <string name="prize_title_drwno">%d회 당첨 결과</string>
+    <string name="prize_title_drwdate">(%s 추첨)</string>
 </resources>

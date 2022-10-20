@@ -1,4 +1,4 @@
-package com.zahi.lotto.presentation.home
+package com.zahi.lotto.presentation.prize
 
 import androidx.lifecycle.MutableLiveData
 import com.zahi.lotto.entity.LotteryNumber
