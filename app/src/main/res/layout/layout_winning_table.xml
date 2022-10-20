@@ -44,7 +44,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.6"
+                    android:layout_weight="0.5"
                     android:gravity="center"
                     android:text="당첨금액"
                     android:textColor="@color/black"
@@ -54,7 +54,7 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
+                    android:layout_weight="0.3"
                     android:gravity="center"
                     android:text="인원"
                     android:textColor="@color/black"
@@ -87,29 +87,31 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
                     android:gravity="center"
-                    android:text="1"
+                    android:text="@{dataViewModel.lotteryItem.get(0).rank}"
                     android:textColor="@color/black"
-                    android:textSize="20dp"/>
+                    android:textSize="17dp"/>
 
                 <TextView
                     android:id="@+id/firstPrize"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.6"
-                    android:gravity="center"
-                    android:text="￦ 100,000,000"
+                    android:layout_weight="0.5"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"
+                    android:text="@{dataViewModel.lotteryItem.get(0).prize}"
                     android:textColor="@color/black"
-                    android:textSize="20dp"/>
+                    android:textSize="17dp"/>
 
                 <TextView
                     android:id="@+id/firstPeople"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:gravity="center"
-                    android:text="9"
+                    android:layout_weight="0.3"
+                    android:gravity="left"
+                    android:drawableLeft="@drawable/ic_people"
+                    android:text="@{dataViewModel.lotteryItem.get(0).people}"
                     android:textColor="@color/black"
-                    android:textSize="20dp"/>
+                    android:textSize="17dp"/>
 
             </LinearLayout>
 
@@ -137,29 +139,31 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
                     android:gravity="center"
-                    android:text="2"
+                    android:text="@{dataViewModel.lotteryItem.get(1).rank}"
                     android:textColor="@color/black"
-                    android:textSize="20dp"/>
+                    android:textSize="17dp"/>
 
                 <TextView
                     android:id="@+id/secondPrize"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.6"
-                    android:gravity="center"
-                    android:text="￦ 100,000,000"
+                    android:layout_weight="0.5"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"
+                    android:text="@{dataViewModel.lotteryItem.get(1).prize}"
                     android:textColor="@color/black"
-                    android:textSize="20dp"/>
+                    android:textSize="17dp"/>
 
                 <TextView
                     android:id="@+id/secondPeople"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:gravity="center"
-                    android:text="9"
+                    android:layout_weight="0.3"
+                    android:gravity="left"
+                    android:drawableLeft="@drawable/ic_people"
+                    android:text="@{dataViewModel.lotteryItem.get(1).people}"
                     android:textColor="@color/black"
-                    android:textSize="20dp"/>
+                    android:textSize="17dp"/>
 
             </LinearLayout>
 
@@ -187,29 +191,31 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
                     android:gravity="center"
-                    android:text="3"
+                    android:text="@{dataViewModel.lotteryItem.get(2).rank}"
                     android:textColor="@color/black"
-                    android:textSize="20dp"/>
+                    android:textSize="17dp"/>
 
                 <TextView
                     android:id="@+id/thirdPrize"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.6"
-                    android:gravity="center"
-                    android:text="￦ 100,000,000"
+                    android:layout_weight="0.5"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"
+                    android:text="@{dataViewModel.lotteryItem.get(2).prize}"
                     android:textColor="@color/black"
-                    android:textSize="20dp"/>
+                    android:textSize="17dp"/>
 
                 <TextView
                     android:id="@+id/thirdPeople"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:gravity="center"
-                    android:text="9"
+                    android:layout_weight="0.3"
+                    android:gravity="left"
+                    android:drawableLeft="@drawable/ic_people"
+                    android:text="@{dataViewModel.lotteryItem.get(2).people}"
                     android:textColor="@color/black"
-                    android:textSize="20dp"/>
+                    android:textSize="17dp"/>
 
             </LinearLayout>
 
@@ -237,29 +243,31 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
                     android:gravity="center"
-                    android:text="4"
+                    android:text="@{dataViewModel.lotteryItem.get(3).rank}"
                     android:textColor="@color/black"
-                    android:textSize="20dp"/>
+                    android:textSize="17dp"/>
 
                 <TextView
                     android:id="@+id/fourthPrize"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.6"
-                    android:gravity="center"
-                    android:text="￦ 100,000,000"
+                    android:layout_weight="0.5"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"
+                    android:text="@{dataViewModel.lotteryItem.get(3).prize}"
                     android:textColor="@color/black"
-                    android:textSize="20dp"/>
+                    android:textSize="17dp"/>
 
                 <TextView
                     android:id="@+id/fourthPeople"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:gravity="center"
-                    android:text="9"
+                    android:layout_weight="0.3"
+                    android:gravity="left"
+                    android:drawableLeft="@drawable/ic_people"
+                    android:text="@{dataViewModel.lotteryItem.get(3).people}"
                     android:textColor="@color/black"
-                    android:textSize="20dp"/>
+                    android:textSize="17dp"/>
 
             </LinearLayout>
 
@@ -287,29 +295,31 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
                     android:gravity="center"
-                    android:text="5"
+                    android:text="@{dataViewModel.lotteryItem.get(4).rank}"
                     android:textColor="@color/black"
-                    android:textSize="20dp"/>
+                    android:textSize="17dp" />
 
                 <TextView
                     android:id="@+id/fifthPrize"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.6"
-                    android:gravity="center"
-                    android:text="￦ 100,000,000"
+                    android:layout_weight="0.5"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"
+                    android:text="@{dataViewModel.lotteryItem.get(4).prize}"
                     android:textColor="@color/black"
-                    android:textSize="20dp"/>
+                    android:textSize="17dp"/>
 
                 <TextView
                     android:id="@+id/fifthPeople"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0.2"
-                    android:gravity="center"
-                    android:text="9"
+                    android:layout_weight="0.3"
+                    android:gravity="left"
+                    android:drawableLeft="@drawable/ic_people"
+                    android:text="@{dataViewModel.lotteryItem.get(4).people}"
                     android:textColor="@color/black"
-                    android:textSize="20dp"/>
+                    android:textSize="17dp"/>
 
             </LinearLayout>
 
