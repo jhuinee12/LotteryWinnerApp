@@ -12,9 +12,12 @@ class RecommendedFragment : BaseFragment<FragmentRecommendedBinding>(R.layout.fr
     private lateinit var viewModel: RecommendedViewModel
     private lateinit var viewModelFactory: RecommendedViewModelFactory
 
+    private val activity: MainActivity by lazy { requireActivity() as MainActivity }
+
     private val recommendedArray = arrayListOf<Int>()
 
     override fun initView() {
+        activity.changeToolbar(title = "추천 번호", true)
 
         binding.apply {
             this.btnRecommended.setOnClickListener {

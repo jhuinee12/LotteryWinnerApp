@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LotteryWinnerApp</string>
+    <string name="app_name">플리즈로또</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="next">Next</string>
@@ -14,4 +14,6 @@
     <string name="prize_title_drwdate">(%s 추첨)</string>
 
     <string name="my_grade">%d등</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

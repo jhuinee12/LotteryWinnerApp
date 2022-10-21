@@ -3,8 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/PrizeFragment">
+    app:startDestination="@id/HomeFragment">
 
+    <fragment
+        android:id="@+id/HomeFragment"
+        android:name="com.zahi.lotto.presentation.home.HomeFragment"
+        tools:layout="@layout/fragment_home">
+    </fragment>
     <fragment
         android:id="@+id/PrizeFragment"
         android:name="com.zahi.lotto.presentation.prize.PrizeFragment"

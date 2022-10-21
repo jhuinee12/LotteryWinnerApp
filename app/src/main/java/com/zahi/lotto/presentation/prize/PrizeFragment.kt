@@ -10,6 +10,7 @@ import com.zahi.lotto.R
 import com.zahi.lotto.repositories.WinnerRepository
 import com.zahi.lotto.base.BaseFragment
 import com.zahi.lotto.databinding.FragmentPrizeBinding
+import com.zahi.lotto.presentation.MainActivity
 import com.zahi.lotto.util.findLatestDrwNo.latestDrwNo
 import java.util.*
 
@@ -21,7 +22,10 @@ class PrizeFragment : BaseFragment<FragmentPrizeBinding>(R.layout.fragment_prize
     private lateinit var viewModel: PrizeViewModel
     private lateinit var viewModelFactory: PrizeViewModelFactory
 
+    private val activity: MainActivity by lazy { requireActivity() as MainActivity }
+
     override fun initView() {
+        activity.changeToolbar(title = "당첨 결과", true)
 
         binding.apply {
             dataViewModel = viewModel

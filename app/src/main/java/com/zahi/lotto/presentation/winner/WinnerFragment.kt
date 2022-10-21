@@ -6,7 +6,6 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zahi.lotto.R
@@ -24,10 +23,13 @@ class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_win
     private lateinit var viewModelFactory: WinnerViewModelFactory
     private lateinit var winnerAdapter: WinnerAdapter
 
+    private val activity: MainActivity by lazy { requireActivity() as MainActivity }
+
     private var drwNo: Long = 0
     private var sumPrize: Long = 0
 
     override fun initView() {
+        activity.changeToolbar(title = "나의 당첨 결과", true)
 
         winnerAdapter = WinnerAdapter(requireContext())
 
@@ -161,7 +163,7 @@ class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_win
     }
 
     fun showHelp (v: View) {
-        HelpDialogFragment().show((activity as MainActivity).supportFragmentManager, null)
+        HelpDialogFragment().show(activity.supportFragmentManager, null)
     }
 
     private fun resetDrwNo() {
