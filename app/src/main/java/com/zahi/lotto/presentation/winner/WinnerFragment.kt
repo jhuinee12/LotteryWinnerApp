@@ -6,6 +6,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.zahi.lotto.R
@@ -13,6 +14,7 @@ import com.zahi.lotto.base.BaseFragment
 import com.zahi.lotto.databinding.FragmentWinnerBinding
 import com.zahi.lotto.repositories.WinnerRepository
 import com.zahi.lotto.util.findLatestDrwNo
+import java.text.DecimalFormat
 
 class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_winner) {
 
@@ -21,6 +23,7 @@ class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_win
     private lateinit var winnerAdapter: WinnerAdapter
 
     private var drwNo: Long = 0
+    private var sumPrize: Long = 0
 
     override fun initView() {
 
@@ -41,6 +44,13 @@ class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_win
             spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                     drwNo = spinner.selectedItem.toString().toLong()
+
+                    if (winnerAdapter.isShowGrade) {
+                        winnerAdapter.lotteryItem = arrayListOf()
+                        winnerAdapter.lotteryWinningNums = arrayListOf()
+
+                        searchWinning(btnSearchWinner)
+                    }
                 }
                 override fun onNothingSelected(p0: AdapterView<*>?) { }
                 override fun onItemClick(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) { }
@@ -51,6 +61,11 @@ class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_win
                 layoutManager = LinearLayoutManager(requireContext())
                 adapter = winnerAdapter
             }
+        }
+
+        winnerAdapter.numberWins.subscribe {
+            sumPrize += it
+            binding.prizeLayout.myPrize.text = DecimalFormat("#,###").format(sumPrize) + " 원"
         }
     }
 
@@ -115,8 +130,12 @@ class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_win
             viewModel.getLottoWinnerNumber(drwNo, "https://www.dhlottery.co.kr/gameResult.do?method=byWin&drwNo=$drwNo")
 
             btnSearchWinner.visibility = View.GONE
-            btnModifyNumber.visibility = View.VISIBLE
             inputNumberLayout.visibility = View.GONE
+
+            btnModifyNumber.visibility = View.VISIBLE
+            containerPrizeLayout.visibility = View.VISIBLE
+
+            resetDrwNo()
 
             winnerAdapter.isShowGrade = true
         }
@@ -125,14 +144,23 @@ class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_win
     fun modifyNumbers (v: View) {
         binding.apply {
             btnSearchWinner.visibility = View.VISIBLE
-            btnModifyNumber.visibility = View.GONE
             inputNumberLayout.visibility = View.VISIBLE
 
+            btnModifyNumber.visibility = View.GONE
+            containerPrizeLayout.visibility = View.GONE
+
+            resetDrwNo()
+
             winnerAdapter.isShowGrade = false
-            winnerAdapter.notifyDataSetChanged()
 
             winnerAdapter.lotteryItem = arrayListOf()
             winnerAdapter.lotteryWinningNums = arrayListOf()
         }
+    }
+
+    private fun resetDrwNo() {
+        sumPrize = 0L
+        binding.prizeLayout.myPrize.text = "0 원"
+        winnerAdapter.notifyDataSetChanged()
     }
 }

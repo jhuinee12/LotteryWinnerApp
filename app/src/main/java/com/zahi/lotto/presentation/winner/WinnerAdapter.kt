@@ -7,19 +7,20 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
+import com.jakewharton.rxrelay3.PublishRelay
 import com.zahi.lotto.R
 import com.zahi.lotto.databinding.ItemInputNumberBinding
 import com.zahi.lotto.entity.LotteryItem
 import com.zahi.lotto.entity.LotteryNumber
 
 class WinnerAdapter(c: Context): RecyclerView.Adapter<WinnerAdapter.WinnerViewHolder>() {
-
     private val context = c
     private var numbers: ArrayList<ArrayList<Int>> = arrayListOf()
 
+    val numberWins = PublishRelay.create<Long>()
+
     var lotteryItem: ArrayList<LotteryItem> = arrayListOf()
     var lotteryWinningNums: ArrayList<Int> = arrayListOf()
-    var myPrize: Long = 0L
     var isShowGrade = false
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WinnerViewHolder =
@@ -31,6 +32,7 @@ class WinnerAdapter(c: Context): RecyclerView.Adapter<WinnerAdapter.WinnerViewHo
             getNumber = numbers[position]
             showGrade = isShowGrade
             this.position = position+1
+            this.rank = 0
 
             delete.setOnClickListener {
                 numbers.removeAt(position)
@@ -68,6 +70,20 @@ class WinnerAdapter(c: Context): RecyclerView.Adapter<WinnerAdapter.WinnerViewHo
 
                     this.rank = calcRank(correctCount, isBonus)
                 }
+            } else {
+                firstNumberShape.background = context.resources.getDrawable(R.color.number_bg_default, null)
+                secondNumberShape.background = context.resources.getDrawable(R.color.number_bg_default, null)
+                thirdNumberShape.background = context.resources.getDrawable(R.color.number_bg_default, null)
+                fourthNumberShape.background = context.resources.getDrawable(R.color.number_bg_default, null)
+                fifthNumberShape.background = context.resources.getDrawable(R.color.number_bg_default, null)
+                sixthNumberShape.background = context.resources.getDrawable(R.color.number_bg_default, null)
+
+                firstNumberStar.visibility = View.GONE
+                secondNumberStar.visibility = View.GONE
+                thirdNumberStar.visibility = View.GONE
+                fourthNumberStar.visibility = View.GONE
+                fifthNumberStar.visibility = View.GONE
+                sixthNumberStar.visibility = View.GONE
             }
         }
     }
@@ -99,21 +115,21 @@ class WinnerAdapter(c: Context): RecyclerView.Adapter<WinnerAdapter.WinnerViewHo
             if (num == lotteryWinningNums[6]) {
                 isBonus = true
                 starV.visibility = View.VISIBLE
+            } else {
+                isCorrect = true
+                starV.visibility = View.GONE
             }
-            else isCorrect = true
         } else {
             v.background = context.resources.getDrawable(R.color.white, null)
+            starV.visibility = View.GONE
         }
 
         return Pair(isCorrect, isBonus)
     }
 
     private fun calcRank(correctCount: Int, isBonus: Boolean): Int {
-        when (correctCount) {
-            6 -> {
-                myPrize += lotteryItem[0].prize
-                return 1
-            }
+        val grade = when (correctCount) {
+            6 -> 1
             5 -> {
                 if (isBonus) 2
                 else 3
@@ -122,6 +138,12 @@ class WinnerAdapter(c: Context): RecyclerView.Adapter<WinnerAdapter.WinnerViewHo
             3 -> 5
             else -> 0
         }
+
+        if (grade != 0) {
+            numberWins.accept(lotteryItem[grade-1].prize.replace(",","" ).replace("원","").toLong())
+        }
+
+        return grade
     }
 
     inner class WinnerViewHolder(view: View): RecyclerView.ViewHolder(view) {
