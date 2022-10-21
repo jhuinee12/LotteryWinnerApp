@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.zahi.lotto.R
 import com.zahi.lotto.base.BaseFragment
 import com.zahi.lotto.databinding.FragmentWinnerBinding
+import com.zahi.lotto.presentation.MainActivity
+import com.zahi.lotto.presentation.dialog.HelpDialogFragment
 import com.zahi.lotto.repositories.WinnerRepository
 import com.zahi.lotto.util.findLatestDrwNo
 import java.text.DecimalFormat
@@ -156,6 +158,10 @@ class WinnerFragment : BaseFragment<FragmentWinnerBinding>(R.layout.fragment_win
             winnerAdapter.lotteryItem = arrayListOf()
             winnerAdapter.lotteryWinningNums = arrayListOf()
         }
+    }
+
+    fun showHelp (v: View) {
+        HelpDialogFragment().show((activity as MainActivity).supportFragmentManager, null)
     }
 
     private fun resetDrwNo() {

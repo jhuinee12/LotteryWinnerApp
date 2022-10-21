@@ -131,9 +131,10 @@
 
                     <include
                         android:id="@+id/prizeLayout"
-                        layout="@layout/layout_prize"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        layout="@layout/layout_prize"
+                        app:fragment="@{fragment}"/>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
